@@ -49,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
         btnStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,11 +72,15 @@ public class MainActivity extends AppCompatActivity {
         timer = new CountDownTimer(Integer.parseInt(edText.getText().toString())*1000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
+
+
                 String hsm = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
                         TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
                         TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)));
                 edText.setText(String.valueOf(millisUntilFinished/1000));
                 tvFinish.setVisibility(View.INVISIBLE);
+
+                System.out.println(TimeUnit.MILLISECONDS.toHours(millisUntilFinished));
             }
 
             @Override
